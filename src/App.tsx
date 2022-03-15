@@ -1,12 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
@@ -19,6 +16,12 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi vel
+        beatae, voluptatibus ullam soluta error deleniti, est, iste placeat
+        pariatur laudantium sed sapiente impedit rem animi rerum accusamus aut
+        debitis!
+      </div>
     </div>
   );
 }
