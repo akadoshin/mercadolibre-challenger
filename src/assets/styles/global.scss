@@ -1,0 +1,11 @@
+@use "./typography";
+
+/** Montserrat font */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: typography.$font-stack;
+}

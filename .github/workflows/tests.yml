@@ -1,6 +1,8 @@
 name: Testing
 
 on:
+  push:
+    branches: [develop]
   pull_request:
     branches: [develop]
 
@@ -13,7 +15,7 @@ jobs:
     strategy:
       matrix:
         language: ["typeScript"]
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
