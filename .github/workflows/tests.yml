@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        language: ["typeScript"]
+        language: ['typeScript']
         node-version: [14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -34,10 +34,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
 
       - name: Install packages
         run: npm i
 
+      - name: Run Eslint
+        run: npm run eslint
+        
       - name: Run tests
         run: npm test

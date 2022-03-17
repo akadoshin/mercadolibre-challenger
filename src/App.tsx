@@ -1,29 +1,35 @@
-import "./App.scss";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi vel
-        beatae, voluptatibus ullam soluta error deleniti, est, iste placeat
-        pariatur laudantium sed sapiente impedit rem animi rerum accusamus aut
-        debitis!
-      </div>
-    </div>
-  );
+/** templates */
+import Layout from './templates/Layout/Layout';
+
+/** pages */
+import NotFound from './pages/NotFound/NotFound';
+import SearchResult from './pages/SearchResult/SearchResult';
+import SearchBox from './pages/SearchBox/SearchBox';
+
+/** available routes */
+export enum ERoutes {
+  PATH = '/',
+  ITEMS = '/items',
 }
+
+/** name of the query params for items page */
+export const ITEMS_PARAM = 'id';
+
+/** create all the routes */
+const App = (): JSX.Element => (
+  <BrowserRouter>
+    <Routes>
+      <Route path={ERoutes.PATH} element={<Layout />}>
+        <Route path={ERoutes.ITEMS} element={<SearchResult />}>
+          <Route path={`:${ITEMS_PARAM}`} element={<SearchBox />} />
+        </Route>
+        {/* if it does not match with some path show NotFound page */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
