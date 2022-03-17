@@ -39,5 +39,8 @@ jobs:
       - name: Install packages
         run: npm i
 
+      - name: Run Eslint
+        run: npm run eslint
+        
       - name: Run tests
         run: npm test
