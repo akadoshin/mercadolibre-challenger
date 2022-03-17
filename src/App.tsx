@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 /** templates */
-import Layout from './templates/Layout';
+import Layout from './templates/Layout/Layout';
 
 /** pages */
-import NotFound from './pages/NotFound';
-import SearchResult from './pages/SearchResult';
-import SearchBox from './pages/SearchBox';
+import NotFound from './pages/NotFound/NotFound';
+import SearchResult from './pages/SearchResult/SearchResult';
+import SearchBox from './pages/SearchBox/SearchBox';
 
 /** available routes */
 export enum ERoutes {
