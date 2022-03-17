@@ -24,14 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: ${{ matrix.language }}
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
-
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -51,18 +43,10 @@ jobs:
         run: npm test -- --coverage
 
       - name: Monitor coverage
-        id: coverage-monitor-clover
-        uses: ./
+        uses: slavcodev/coverage-monitor-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage_path: ".coverage/clover.xml"
-          comment_context: "Coverage from clover"
-
-      - name: Monitor coverage
-        id: coverage-monitor-json
-        uses: ./
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage_path: ".coverage/coverage-summary.json"
-          comment_context: "Coverage from json-summary"
-          check: false
+          coverage_path: "coverage/clover.xml"
+          threshold_alert: 10
+          threshold_warning: 50
+          threshold_metric: "lines"
