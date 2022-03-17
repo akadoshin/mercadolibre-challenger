@@ -47,10 +47,13 @@ jobs:
         
       - name: Run tests
         run: npm test
+        
+      - name: Run tests coverage
+        run: npm test -- --coverage
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@v1
-        if: github.event_name == 'pull_request' && ! contains(github.event.pull_request.labels.*.name, 'dependencies')
+        if: github.event_name == 'pull_request'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           coverage_path: "coverage/clover.xml"
