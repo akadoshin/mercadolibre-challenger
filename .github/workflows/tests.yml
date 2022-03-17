@@ -53,6 +53,7 @@ jobs:
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@v1
+        if: github.event_name == 'pull_request' && ! contains(github.event.pull_request.labels.*.name, 'dependencies')
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           coverage_path: "coverage/clover.xml"
