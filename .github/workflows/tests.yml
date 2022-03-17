@@ -47,9 +47,6 @@ jobs:
         
       - name: Run tests
         run: npm test
-        
-      - name: Run tests coverage
-        run: npm test -- --coverage
 
       - name: Monitor coverage
         uses: slavcodev/coverage-monitor-action@v1
