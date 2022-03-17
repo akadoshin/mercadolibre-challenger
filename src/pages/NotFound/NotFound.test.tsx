@@ -1,10 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 
 /** page */
-import NotFound from "./NotFound";
+import NotFound from './NotFound';
 
-test("should show notFound content", () => {
+test('should show notFound content', () => {
   render(<NotFound />);
-  const text = screen.getByText("NotFound");
+  const text = screen.getByText('NotFound');
   expect(text).toBeInTheDocument();
 });

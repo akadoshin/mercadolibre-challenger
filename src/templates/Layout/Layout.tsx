@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 /** template for all pages
  * @param {object} props
  */
-const Layout = () => (
+const Layout = (): JSX.Element => (
   <div>
     <Outlet />
   </div>

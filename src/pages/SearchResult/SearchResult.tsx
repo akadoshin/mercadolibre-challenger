@@ -1,3 +1,3 @@
-const SearchResult = () => <div>SearchResult</div>;
+const SearchResult = (): JSX.Element => <div>SearchResult</div>;
 
 export default SearchResult;

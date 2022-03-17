@@ -1,0 +1,38 @@
+{
+  "printWidth": 120,
+  "jsxBracketSameLine": true,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "arrowParens": "always",
+  "semi": true,
+  "newline-before-return": true,
+  "no-duplicate-variable": [true, "check-parameters"],
+  "no-var-keyword": true,
+  "overrides": [
+    {
+      "files": "*.{js,jsx,tsx,ts}",
+      "options": {
+        "parser": "babel-ts"
+      }
+    },
+    {
+      "files": "*.{scss}",
+      "options": {
+        "parser": "scss"
+      }
+    },
+    {
+      "files": "*.{html}",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}
