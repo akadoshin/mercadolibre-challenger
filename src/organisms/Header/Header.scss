@@ -1,0 +1,25 @@
+@use '/src/assets/scss/colors';
+@use '/src/assets/scss/sizes';
+@use '/src/assets/scss/typography';
+
+/** Header */
+$header-padding: 8px 0;
+$header-elements-height: 36px;
+
+.header {
+  background-color: colors.$primary;
+  padding: $header-padding;
+
+  &__title {
+    margin: 0;
+
+    a {
+      display: flex;
+    }
+  }
+
+  &__logo {
+    height: $header-elements-height;
+    cursor: pointer;
+  }
+}

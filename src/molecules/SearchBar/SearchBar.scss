@@ -1,0 +1,107 @@
+@use '/src/assets/scss/colors';
+@use '/src/assets/scss/sizes';
+@use '/src/assets/scss/typography';
+@use '/src/assets/scss/breakpoints' as *;
+
+/** Input search */
+$search-size: 36px;
+$search-padding: 15px;
+$search-input-autocomplete-size: 22%;
+$search-z-index: 5;
+
+/** dropdown */
+$m-top: 2px;
+
+.search {
+  position: relative;
+
+  &__box {
+    display: flex;
+    transition: margin-left 0.2s ease;
+
+    &-input {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: sizes.$sm-border-radius 0 0 sizes.$sm-border-radius;
+      height: $search-size;
+      background-color: colors.$white;
+      font-size: typography.$base;
+      color: colors.$dark-100;
+      border: 0;
+      outline: 0;
+      padding: 0;
+      padding-left: $search-padding;
+      padding-right: $search-padding;
+    }
+
+    &-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 0 sizes.$sm-border-radius sizes.$sm-border-radius 0;
+      background-color: colors.$light;
+      height: $search-size;
+      width: $search-size;
+      outline: 0;
+      cursor: pointer;
+    }
+
+    &-input,
+    &-button {
+      z-index: $search-z-index;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    width: 100%;
+    background-color: colors.$white;
+    border-radius: 0 0 sizes.$sm-border-radius sizes.$sm-border-radius;
+    box-shadow: sizes.$sm-box-shadow;
+    margin-top: -$m-top;
+    border-top: $m-top + 1 solid colors.$light;
+    z-index: $search-z-index - 1;
+
+    &-list {
+      overflow: hidden;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    &-item {
+      padding: $search-padding;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover,
+      &:focus {
+        background-color: colors.$light;
+      }
+    }
+  }
+
+  /** Focus event */
+  &-focus {
+    .search {
+      &__dropdown,
+      &__box {
+        margin-left: -$search-input-autocomplete-size;
+      }
+
+      &__dropdown {
+        width: calc(100% + $search-input-autocomplete-size);
+      }
+
+      /** remove responsive mobile in md */
+      @include md {
+        &__dropdown,
+        &__box {
+          margin-left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

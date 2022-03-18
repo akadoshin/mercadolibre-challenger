@@ -1,12 +1,18 @@
 import { Outlet } from 'react-router-dom';
 
-/** template for all pages
+/** Organisms */
+import Header from '../../organisms/Header/Header';
+
+/** Template for all pages
  * @param {object} props
  */
 const Layout = (): JSX.Element => (
-  <div>
-    <Outlet />
-  </div>
+  <>
+    <Header />
+    <main>
+      <Outlet />
+    </main>
+  </>
 );
 
 export default Layout;
