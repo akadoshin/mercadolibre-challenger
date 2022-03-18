@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-/** page */
+/** Pages */
 import ProductDetail from './ProductDetail';
 
 test('should show ProductDetail content', () => {

@@ -1,4 +1,5 @@
 @use './typography';
+@use './colors';
 
 /** Montserrat font */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
@@ -8,4 +9,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: typography.$font-stack;
+  background-color: colors.$light;
 }

@@ -1,0 +1,9 @@
+{
+	"molecules": {
+		"search": {
+			"input": {
+				"placeholder": "Nunca dejes de buscar"
+			}
+		}
+	}
+}
