@@ -7,6 +7,10 @@
 $search-size: 36px;
 $search-padding: 15px;
 $search-input-autocomplete-size: 22%;
+$search-z-index: 5;
+
+/** dropdown */
+$m-top: 2px;
 
 .search {
   position: relative;
@@ -45,7 +49,7 @@ $search-input-autocomplete-size: 22%;
 
     &-input,
     &-button {
-      z-index: 5;
+      z-index: $search-z-index;
     }
   }
 
@@ -55,31 +59,24 @@ $search-input-autocomplete-size: 22%;
     background-color: colors.$white;
     border-radius: 0 0 sizes.$sm-border-radius sizes.$sm-border-radius;
     box-shadow: sizes.$sm-box-shadow;
-    margin-top: -2px;
-    z-index: 4;
-    // height: auto;
-    // overflow: hidden;
-    // transition: max-height 0.2s ease;
+    margin-top: -$m-top;
+    border-top: $m-top + 1 solid colors.$light;
+    z-index: $search-z-index - 1;
 
     &-list {
-      //   max-height: 0;
-
       overflow: hidden;
       list-style-type: none;
       padding: 0;
       margin: 0;
-      //   transition: max-height 0.2s ease;
     }
 
     &-item {
-      //   display: flex;
-      //   align-items: center;
-      //   justify-content: flex-start;
       padding: $search-padding;
       cursor: pointer;
       transition: background-color 0.2s ease;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: colors.$light;
       }
     }

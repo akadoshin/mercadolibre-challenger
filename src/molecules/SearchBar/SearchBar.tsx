@@ -12,20 +12,35 @@ import './SearchBar.scss';
 const langText = lang.molecules.search;
 
 const SearchBar = (): JSX.Element => {
-  const [focus, setFocus] = useState(false);
-  const [search, setSearch] = useState<string>();
-  console.log('SearchBar', search);
+  const [focus, setFocus] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>('');
 
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+
+  /**
+   * @description Handle the input change
+   * @param {HTMLInputElement} value
+   * @returns {void}
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
 
-    if (value) {
-      setSearch(e.target.value);
-    }
+    setSuggestions(value.length ? [value, value + value, value + value + value] : []);
+    setSearch(e.target.value);
   };
 
+  /**
+   * @description Handle the input submit
+   * @param {HTMLFormElement} value
+   * @returns {void}
+   */
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
+
+  // install classnames
   return (
-    <div data-testid="search" className={`search ${focus && 'search-focus'}`}>
+    <form role="search" className={`search ${focus && 'search-focus'}`} onSubmit={handleSubmit}>
       <div className="search__box">
         <input
           type="text"
@@ -35,25 +50,37 @@ const SearchBar = (): JSX.Element => {
             setFocus(true);
           }}
           onBlur={(): void => {
-            setFocus(false);
+            /** delay focus for 100ms, to be able to click on the dropdown list */
+            setTimeout(() => {
+              setFocus(false);
+            }, 100);
           }}
+          value={search}
           onChange={handleChange}
         />
-        <button className="search__box-button" type="button">
+        <button className="search__box-button" type="submit">
           <img src={searchIcon} alt="search" className="search__box-button-icon" />
         </button>
       </div>
-      {focus && search && (
+      {focus && search && suggestions.length > 0 && (
         <div className="search__dropdown">
           <ul className="search__dropdown-list">
-            <li className="search__dropdown-item">Apple Ipod</li>
-            <li className="search__dropdown-item">Apple Ipod touch</li>
-            <li className="search__dropdown-item">Apple Ipod 5g</li>
-            <li className="search__dropdown-item">Apple 16gb</li>
+            {suggestions.map((suggestion: string) => (
+              <li
+                key={suggestion}
+                role="option"
+                aria-selected="false"
+                className="search__dropdown-item"
+                onClick={(): void => {
+                  setSearch(suggestion);
+                }}>
+                {suggestion}
+              </li>
+            ))}
           </ul>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 

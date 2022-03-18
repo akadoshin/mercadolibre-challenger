@@ -18,7 +18,7 @@ describe('should show Header content', () => {
 
   test('check if search exists', () => {
     render(<Header />);
-    const searchComponent = screen.getByTestId('search');
+    const searchComponent = screen.getByRole('search');
     expect(searchComponent).toBeInTheDocument();
   });
 });
