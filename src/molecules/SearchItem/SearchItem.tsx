@@ -48,7 +48,7 @@ const SearchItem = ({ to, title, description, shortDescription, shipping, img }:
             <div className="search_item__content">
               <div className="search_item__content-image">
                 {/** Pending: using different image's resolutions */}
-                <img loading="lazy" src={imgUrl} alt={imgAlt} srcSet={`${imgUrl} 1x, ${imgUrl} 2x`} />
+                <img loading="lazy" src={imgUrl} alt={imgAlt} />
               </div>
               <div className="search_item__content-text">
                 <Row align="center">
