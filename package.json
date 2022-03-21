@@ -7,7 +7,7 @@
     "url": "https://github.com/akadoshin/mercadolibre-challenger.git"
   },
   "scripts": {
-    "prepare": "npm install && cd backend && npm install",
+    "prepare": "npm install",
     "start": "react-scripts start",
     "start-backend": "cd backend && npm start",
     "heroku-postbuild": "cd backend && npm start",
