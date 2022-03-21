@@ -1,0 +1,9 @@
+@use '/src/assets/scss/spacing';
+@use '/src/assets/scss/sizes';
+@use '/src/assets/scss/colors';
+
+.box {
+  background-color: colors.$white;
+  margin-top: spacing.$spacing-1;
+  border-radius: sizes.$sm-border-radius sizes.$sm-border-radius 0 0;
+}

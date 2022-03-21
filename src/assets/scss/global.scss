@@ -2,7 +2,7 @@
 @use './colors';
 
 /** Montserrat font */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
 
 body {
   margin: 0;
@@ -10,4 +10,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: typography.$font-stack;
   background-color: colors.$light;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,0 +1,110 @@
+@use '/src/assets/scss/spacing';
+@use '/src/assets/scss/sizes';
+@use '/src/assets/scss/colors';
+@use '/src/assets/scss/typography';
+@use '/src/assets/scss/breakpoints' as *;
+
+/** Search Item */
+$search-item-padding: spacing.$spacing-1;
+$search-item-image-small-size: 144px;
+$search-item-image-size: 180px;
+$search-item-shipping-size: 18px;
+$search-item-separator-margin: calc(spacing.$spacing-1 + 10px);
+
+.search_item {
+  position: relative;
+  padding: $search-item-padding;
+
+  &__content {
+    display: flex;
+
+    &-image {
+      margin-right: $search-item-padding;
+
+      img {
+        width: $search-item-image-small-size;
+        height: $search-item-image-small-size;
+        border-radius: sizes.$sm-border-radius;
+      }
+    }
+
+    &-text {
+      flex: 1;
+
+      &-container {
+        display: flex;
+        align-items: center;
+      }
+
+      &-title {
+        font-size: typography.$base;
+        color: colors.$dark-100;
+        font-weight: normal;
+        margin: spacing.$spacing-sm 0;
+
+        &::before {
+          content: '$';
+          margin-right: spacing.$spacing-sm;
+        }
+      }
+
+      &-description {
+        font-size: typography.$sm;
+        color: colors.$dark-100;
+        margin: 0;
+      }
+
+      &-shipping {
+        width: $search-item-shipping-size;
+        height: $search-item-shipping-size;
+        margin-left: spacing.$spacing-sm;
+      }
+
+      &-short {
+        font-size: typography.$xs;
+        color: colors.$dark-300;
+        margin: spacing.$spacing-sm 0;
+      }
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: $search-item-separator-margin;
+    right: $search-item-separator-margin;
+    bottom: 0;
+    width: calc(100% - $search-item-separator-margin * 2);
+    background-color: colors.$light;
+    height: 1.1px; // (issue) To be as design
+    // border-bottom: 1px solid colors.$light; // Correct implementation
+  }
+
+  /** responsive */
+  @include sm {
+    &__content {
+      &-image {
+        img {
+          width: $search-item-image-size;
+          height: $search-item-image-size;
+          background-color: colors.$light;
+        }
+      }
+
+      &-text {
+        &-title {
+          font-size: typography.$xl;
+          margin: spacing.$spacing-1 0;
+        }
+
+        &-description {
+          font-size: typography.$lg;
+        }
+
+        &-short {
+          margin: spacing.$spacing-1 0;
+        }
+      }
+    }
+  }
+}

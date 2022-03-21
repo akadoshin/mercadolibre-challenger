@@ -1,7 +1,11 @@
+import { Container } from 'react-grid-system';
 import { Outlet } from 'react-router-dom';
 
 /** Organisms */
 import Header from '../../organisms/Header/Header';
+
+/** Scss styles */
+import './Layout.scss';
 
 /** Template for all pages
  * @param {object} props
@@ -9,9 +13,11 @@ import Header from '../../organisms/Header/Header';
 const Layout = (): JSX.Element => (
   <>
     <Header />
-    <main>
-      <Outlet />
-    </main>
+    <Container>
+      <main className="main_content">
+        <Outlet />
+      </main>
+    </Container>
   </>
 );
 

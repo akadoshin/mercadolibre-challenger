@@ -1,25 +1,48 @@
 @use '/src/assets/scss/colors';
 @use '/src/assets/scss/sizes';
-@use '/src/assets/scss/typography';
+@use '/src/assets/scss/spacing';
+@use '/src/assets/scss/breakpoints' as *;
 
 /** Header */
 $header-padding: 8px 0;
+$header-icon-width: 53px;
 $header-elements-height: 36px;
 
 .header {
+  position: fixed;
+  width: 100%;
+  max-height: sizes.$header-max-height;
   background-color: colors.$primary;
   padding: $header-padding;
+  z-index: 999;
 
-  &__title {
-    margin: 0;
+  &__content {
+    display: flex;
 
-    a {
-      display: flex;
+    &-title {
+      margin: 0;
+      margin-right: spacing.$spacing-sm;
+
+      a {
+        display: flex;
+      }
     }
-  }
 
-  &__logo {
-    height: $header-elements-height;
-    cursor: pointer;
+    &-logo {
+      width: $header-icon-width;
+      height: $header-elements-height;
+      cursor: pointer;
+    }
+
+    &-search {
+      flex: 1;
+    }
+
+    /** Responsive */
+    @include sm {
+      &-title {
+        margin-right: spacing.$spacing-1;
+      }
+    }
   }
 }
