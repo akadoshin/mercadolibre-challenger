@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 /** lang */
@@ -14,6 +14,7 @@ import './SearchBar.scss';
 import { ERoutes } from '../../App';
 
 const langText = lang.molecules.search;
+const localKey = 'storage_suggestions';
 
 /** Search Bar
  *
@@ -37,6 +38,32 @@ const SearchBar = (): JSX.Element => {
   };
 
   /**
+   * @description push the search value to the local storage array for the suggestions
+   * @param {string} _search
+   */
+  const pushSearch = (_search: string): void => {
+    const localSearch = localStorage.getItem(localKey);
+    const localSearchList = localSearch ? JSON.parse(localSearch) : [];
+
+    if (localSearchList.length > 15) {
+      localSearchList.shift();
+    }
+    localSearchList.push(_search);
+
+    localStorage.setItem(localKey, JSON.stringify([...(new Set(localSearchList) as never)]));
+  };
+
+  /**
+   * @description get the suggestions from the local storage
+   */
+  const getLocalSuggestions = (): string[] => {
+    const localSearch = localStorage.getItem(localKey);
+    const localSearchList = localSearch ? JSON.parse(localSearch) : [];
+
+    return localSearchList.reverse();
+  };
+
+  /**
    * @description Handle the input change
    * @param {HTMLInputElement} value
    */
@@ -44,8 +71,13 @@ const SearchBar = (): JSX.Element => {
     const { value } = e.target;
 
     setFocus(true);
-    setSuggestions(value.length ? [value, value + value, value + value + value] : []);
-    setSearch(e.target.value);
+    setSearch(value);
+
+    const localSearchList = getLocalSuggestions();
+    const searchList = localSearchList.filter((item: string) => item.toLowerCase().includes(search.toLowerCase()));
+    searchList.splice(4);
+
+    setSuggestions(searchList);
   };
 
   /**
@@ -55,8 +87,18 @@ const SearchBar = (): JSX.Element => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setFocus(false);
+    pushSearch(search);
     onNavigate(search);
   };
+
+  useEffect(() => {
+    if (focus) {
+      const localSearchList = getLocalSuggestions();
+      localSearchList.splice(4);
+
+      setSuggestions(localSearchList);
+    }
+  }, [focus]);
 
   return (
     <form className={`search ${focus && 'search-focus'}`} onSubmit={handleSubmit} role="search">
@@ -82,12 +124,12 @@ const SearchBar = (): JSX.Element => {
           <img src={searchIcon} alt="search" className="search__box-button-icon" />
         </button>
       </div>
-      {focus && search && suggestions.length > 0 && (
+      {focus && suggestions.length > 0 && (
         <div className="search__dropdown">
           <ul className="search__dropdown-list">
             {suggestions.map((suggestion: string) => (
               <li
-                key={suggestion}
+                key={Math.random()}
                 role="option"
                 aria-selected="false"
                 className="search__dropdown-item"

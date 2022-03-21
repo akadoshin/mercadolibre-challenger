@@ -1,0 +1,96 @@
+@use '/src/assets/scss/colors';
+@use '/src/assets/scss/spacing';
+@use '/src/assets/scss/sizes';
+@use '/src/assets/scss/typography';
+@use '/src/assets/scss/breakpoints' as *;
+
+/** Product detail */
+$product-detail-picture-size: 100%;
+
+.product_detail_page {
+  &-loading {
+    padding: spacing.$spacing-2;
+    margin-top: spacing.$spacing-2;
+    text-align: center;
+  }
+
+  &__content {
+    padding: spacing.$spacing-2;
+
+    &-picture {
+      text-align: center;
+
+      img {
+        width: $product-detail-picture-size;
+        height: $product-detail-picture-size;
+      }
+    }
+
+    &-header {
+      margin-top: spacing.$spacing-2;
+
+      &-quantity {
+        margin-bottom: spacing.$spacing-sm;
+        font-size: typography.$sm;
+        color: colors.$dark-100;
+        letter-spacing: -0.5px;
+      }
+
+      &-title {
+        margin-bottom: spacing.$spacing-1;
+        font-size: typography.$xl;
+        color: colors.$dark-100;
+      }
+
+      &-price {
+        margin-bottom: spacing.$spacing-2;
+        font-size: typography.$x3l;
+        color: colors.$dark-100;
+
+        &::before {
+          content: '$';
+          margin-right: spacing.$spacing-sm;
+        }
+      }
+
+      &-button {
+        font-size: typography.$lg;
+        color: colors.$white;
+        background-color: colors.$button-primary;
+        border: 0;
+        outline: 0;
+        border-radius: sizes.$sm-border-radius;
+        padding: spacing.$spacing-sm spacing.$spacing-2;
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    &-footer {
+      margin-top: spacing.$spacing-2;
+
+      &-title {
+        margin-bottom: spacing.$spacing-2;
+        font-size: typography.$x2l;
+        font-weight: normal;
+      }
+
+      &-description {
+        font-size: typography.$base;
+        color: colors.$dark-300;
+      }
+    }
+  }
+
+  /** responsive */
+  @include sm {
+    &__content {
+      &-picture {
+        img {
+          width: auto;
+          height: $product-detail-picture-size;
+        }
+      }
+    }
+  }
+}

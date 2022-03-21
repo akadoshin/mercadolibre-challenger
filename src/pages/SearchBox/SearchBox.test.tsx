@@ -5,6 +5,6 @@ import SearchBox from './SearchBox';
 
 test('should show SearchBox content', () => {
   render(<SearchBox />);
-  const text = screen.getByText('SearchBox');
+  const text = screen.getByTestId('search_box_page');
   expect(text).toBeInTheDocument();
 });

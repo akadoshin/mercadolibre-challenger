@@ -25,6 +25,9 @@ describe('should show SearchBar content', () => {
     const input = screen.getByRole('searchbox') as HTMLInputElement;
     const value = 'test';
     fireEvent.change(input, { target: { value } });
+    fireEvent.submit(input);
+
+    fireEvent.change(input, { target: { value: 'tes' } });
     fireEvent.focus(input);
 
     const searchBox = screen.getByRole('search');
@@ -33,7 +36,7 @@ describe('should show SearchBar content', () => {
     const dropdown = screen.getByRole('list');
     expect(dropdown).toBeInTheDocument();
 
-    const dropdownItem = dropdown.querySelector('li:nth-child(2)') as HTMLLIElement;
+    const dropdownItem = dropdown.querySelector('li:nth-child(1)') as HTMLLIElement;
     expect(dropdownItem).toBeInTheDocument();
 
     fireEvent.click(dropdownItem);

@@ -1,0 +1,10 @@
+@use '/src/assets/scss/colors';
+@use '/src/assets/scss/spacing';
+
+.search_result_page {
+  &-not_result {
+    padding: spacing.$spacing-2;
+    margin-top: spacing.$spacing-2;
+    text-align: center;
+  }
+}

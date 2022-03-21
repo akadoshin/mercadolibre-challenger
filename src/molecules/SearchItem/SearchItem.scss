@@ -41,6 +41,11 @@ $search-item-separator-margin: calc(spacing.$spacing-1 + 10px);
         color: colors.$dark-100;
         font-weight: normal;
         margin: spacing.$spacing-sm 0;
+
+        &::before {
+          content: '$';
+          margin-right: spacing.$spacing-sm;
+        }
       }
 
       &-description {

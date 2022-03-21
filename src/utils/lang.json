@@ -5,5 +5,21 @@
 				"placeholder": "Nunca dejes de buscar"
 			}
 		}
+	},
+	"pages": {
+		"searchResult": {
+			"noResult": "No se encontraron resultados para \"{search}\""
+		},
+		"productDetail": {
+			"header": {
+				"soldQuantity": "Nuevo - {quantity} vendidos"
+			},
+			"button": {
+				"buy": "Comprar"
+			},
+			"result": {
+				"title": "Descripción del producto"
+			}
+		}
 	}
 }
