@@ -4,13 +4,18 @@ import { useState } from 'react';
 import lang from '../../utils/lang.json';
 
 /** Assets */
-import searchIcon from '../../assets/images/ic_Search.svg';
+import searchIcon from '../../assets/icons/ic_Search.svg';
 
 /** Scss styles */
 import './SearchBar.scss';
 
 const langText = lang.molecules.search;
 
+/** Search Bar
+ *
+ * @example
+ * <SearchBar />
+ */
 const SearchBar = (): JSX.Element => {
   const [focus, setFocus] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
@@ -20,7 +25,6 @@ const SearchBar = (): JSX.Element => {
   /**
    * @description Handle the input change
    * @param {HTMLInputElement} value
-   * @returns {void}
    */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
@@ -32,18 +36,17 @@ const SearchBar = (): JSX.Element => {
   /**
    * @description Handle the input submit
    * @param {HTMLFormElement} value
-   * @returns {void}
    */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
   };
 
-  // install classnames
   return (
-    <form role="search" className={`search ${focus && 'search-focus'}`} onSubmit={handleSubmit}>
+    <form className={`search ${focus && 'search-focus'}`} onSubmit={handleSubmit} role="search">
       <div className="search__box">
         <input
           type="text"
+          role="searchbox"
           placeholder={langText.input.placeholder}
           className="search__box-input"
           onFocus={(): void => {

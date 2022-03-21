@@ -5,6 +5,6 @@ import SearchResult from './SearchResult';
 
 test('should show SearchResult content', () => {
   render(<SearchResult />);
-  const text = screen.getByText('SearchResult');
-  expect(text).toBeInTheDocument();
+  const searchList = screen.getByRole('list');
+  expect(searchList).toBeInTheDocument();
 });

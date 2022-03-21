@@ -1,0 +1,5 @@
+@use '/src/assets/scss/sizes';
+
+.main_content {
+  padding-top: sizes.$header-max-height;
+}

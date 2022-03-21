@@ -12,7 +12,7 @@ describe('should show Header content', () => {
 
   test('should content MELI icon', () => {
     render(<Header />);
-    const logo = screen.getByAltText('logo');
+    const logo = screen.getByAltText('Mercadolibre');
     expect(logo).toBeInTheDocument();
   });
 

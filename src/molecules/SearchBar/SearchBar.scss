@@ -5,8 +5,9 @@
 
 /** Input search */
 $search-size: 36px;
+$icon-size: 18px;
 $search-padding: 15px;
-$search-input-autocomplete-size: 22%;
+$search-input-autocomplete-size: 21%;
 $search-z-index: 5;
 
 /** dropdown */
@@ -45,6 +46,11 @@ $m-top: 2px;
       width: $search-size;
       outline: 0;
       cursor: pointer;
+
+      &-icon {
+        width: $icon-size;
+        height: $icon-size;
+      }
     }
 
     &-input,
@@ -74,6 +80,8 @@ $m-top: 2px;
       padding: $search-padding;
       cursor: pointer;
       transition: background-color 0.2s ease;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:hover,
       &:focus {

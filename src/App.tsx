@@ -22,7 +22,8 @@ const App = (): JSX.Element => (
   <BrowserRouter>
     <Routes>
       <Route path={ERoutes.PATH} element={<Layout />}>
-        <Route path={ERoutes.ITEMS} element={<SearchResult />}>
+        <Route path={ERoutes.ITEMS}>
+          <Route index element={<SearchResult />} />
           <Route path={`:${ITEMS_PARAM}`} element={<SearchBox />} />
         </Route>
         {/* if it does not match with some path show NotFound page */}
