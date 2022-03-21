@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:prepare": "npm install && cd backend && npm install",
     "start:dev": "concurrently \"npm start\" \"cd backend && npm start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
