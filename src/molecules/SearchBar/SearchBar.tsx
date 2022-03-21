@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /** lang */
 import lang from '../../utils/lang.json';
@@ -9,6 +10,9 @@ import searchIcon from '../../assets/icons/ic_Search.svg';
 /** Scss styles */
 import './SearchBar.scss';
 
+/** Routes */
+import { ERoutes } from '../../App';
+
 const langText = lang.molecules.search;
 
 /** Search Bar
@@ -17,10 +21,20 @@ const langText = lang.molecules.search;
  * <SearchBar />
  */
 const SearchBar = (): JSX.Element => {
+  const navigate = useNavigate();
+
   const [focus, setFocus] = useState<boolean>(false);
   const [search, setSearch] = useState<string>('');
 
   const [suggestions, setSuggestions] = useState<string[]>([]);
+
+  /**
+   * @description Navigate to the search page
+   * @param {string} _q
+   */
+  const onNavigate = (_q: string): void => {
+    navigate(`${ERoutes.ITEMS}?search=${_q}`);
+  };
 
   /**
    * @description Handle the input change
@@ -29,6 +43,7 @@ const SearchBar = (): JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
 
+    setFocus(true);
     setSuggestions(value.length ? [value, value + value, value + value + value] : []);
     setSearch(e.target.value);
   };
@@ -39,6 +54,8 @@ const SearchBar = (): JSX.Element => {
    */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setFocus(false);
+    onNavigate(search);
   };
 
   return (
@@ -76,6 +93,7 @@ const SearchBar = (): JSX.Element => {
                 className="search__dropdown-item"
                 onClick={(): void => {
                   setSearch(suggestion);
+                  onNavigate(suggestion);
                 }}>
                 {suggestion}
               </li>

@@ -41,7 +41,7 @@ const SearchItem = ({ to, title, description, shortDescription, shipping, img }:
   const imgAlt = typeof img === 'object' && img.alt ? img.alt : description;
 
   return (
-    <article role="listitem" className="search_item">
+    <article data-testid="search_item" className="search_item">
       <Row nogutter>
         <Col sm={12}>
           <Link to={to} role="link" className="search_item__content-link">

@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from 'test-utils';
 
-/** page */
+/** Page */
 import SearchResult from './SearchResult';
 
 test('should show SearchResult content', () => {
   render(<SearchResult />);
-  const searchList = screen.getByRole('list');
+  const searchList = screen.getByTestId('search_result_page');
   expect(searchList).toBeInTheDocument();
 });

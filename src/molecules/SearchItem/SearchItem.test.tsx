@@ -6,13 +6,13 @@ import SearchItem from './SearchItem';
 describe('should content search item', () => {
   test('checking basic render', () => {
     render(<SearchItem to="/" title="test" description="test desc" img="https://via.placeholder.com/180" />);
-    const searchItem = screen.getByRole('listitem');
+    const searchItem = screen.getByTestId('search_item');
     expect(searchItem).toBeInTheDocument();
   });
 
   test('checking img prop', () => {
     render(<SearchItem to="/" title="test" description="test desc" img={{ url: 'https://via.placeholder.com/180' }} />);
-    const searchItem = screen.getByRole('listitem');
+    const searchItem = screen.getByTestId('search_item');
     expect(searchItem).toBeInTheDocument();
   });
 
@@ -25,7 +25,7 @@ describe('should content search item', () => {
         img={{ url: 'https://via.placeholder.com/180', alt: 'test image alt' }}
       />
     );
-    const searchItem = screen.getByRole('listitem');
+    const searchItem = screen.getByTestId('search_item');
     expect(searchItem).toBeInTheDocument();
 
     const image = screen.getByAltText('test image alt') as HTMLImageElement;

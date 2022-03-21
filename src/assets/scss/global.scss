@@ -11,3 +11,7 @@ body {
   font-family: typography.$font-stack;
   background-color: colors.$light;
 }
+
+a {
+  text-decoration: none;
+}
